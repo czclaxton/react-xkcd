@@ -12,6 +12,15 @@ function App() {
       .catch(err => console.log(err));
   }, []);
 
+  const fetchComic = id => {
+    axios
+      .get(
+        `https://cors-anywhere.herokuapp.com/https://xkcd.com/${id}/info.0.json`
+      )
+      .then(res => setComic(res.data))
+      .catch(err => console.log(err));
+  };
+
   console.log("comic", comic);
 
   if (!comic) {
